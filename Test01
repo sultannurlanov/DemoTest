@@ -22,3 +22,25 @@ test('get started link', async ({ page }) => {
 test('Мой первый тест', () => {
 console.log("Helo,My test") 
 })
+
+
+// Правила .
+По умолчанию PW ищет в папке ./tests файлы, имена которых подходят по маске *.*(test|spec).(js|ts). 
+Имя файла состоит из трех частей, разделенных точками.
+
+Первая часть – произвольная. Здесь ты можешь выразить, что за тесты в этом файле. Например, login или paymanets.
+Вторая часть должна быть строго или test, или spec. Например, наш файл с тестами называется tests/example.spec.ts.
+Третья часть – расширение файла. Мы будем работать c файлами typescript(.ts) или javascript(.js).
+
+Вот несколько примеров имен файлов, которые PW распознает и выполнит:
+
+super.test.js
+login.spec.js
+payments_positive.test.ts
+payments_negative_stubbed.spec.js
+
+А эти файлы не будут распознаны как файлы с тестами, даже если внутри будут находиться автотесты:
+
+super_test.js
+spec.to_potronum.ts
+smoke.tests.js
