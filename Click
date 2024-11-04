@@ -1,0 +1,23 @@
+// Importing the 'test' and 'expect' functions from the Playwright library.
+// Импортируем функции 'test' и 'expect' из библиотеки Playwright.
+const { test, expect } = require('@playwright/test');
+
+// Defining a test named 'click test'. The async function receives a context object containing a 'page' instance.
+// Определяем тест с именем 'click test'. Асинхронная функция получает объект контекста, содержащий экземпляр 'page'.
+test('click test', async ({ page }) => {
+  
+  // Navigating to the specified URL. This loads the page where the test will be performed.
+  // Переходим по указанному URL. Это загружает страницу, на которой будет выполняться тест.
+  await page.goto('http://uitestingplayground.com/click');
+  
+  // Locating the element with the ID 'badButton' and clicking on it. This simulates a user clicking the button.
+  // Находим элемент с ID 'badButton' и кликаем по нему. Это имитирует нажатие кнопки пользователем.
+  await page.locator("#badButton").click();
+  
+  // Asserting that the class attribute of the '#badButton' element matches the regex pattern '/btn-success/'. 
+  // This checks if the button's class has changed to indicate success.
+  // Проверяем, что атрибут класса элемента '#badButton' соответствует регулярному выражению '/btn-success/'. 
+  // Это проверяет, изменился ли класс кнопки на индикатор успешного выполнения.
+  await expect(await page.locator("#badButton").getAttribute("class")).toMatch(/btn-success/);
+  
+}); // Closing the test function. // Закрываем функцию теста.
