@@ -21,3 +21,20 @@ test('click test', async ({ page }) => {
   await expect(await page.locator("#badButton").getAttribute("class")).toMatch(/btn-success/);
   
 }); // Closing the test function. // Закрываем функцию теста.
+
+//проверка ввода логин и пароль 
+const { test, expect } = require('@playwright/test');
+
+test('auth test', async ({ page }) => {
+  await page.goto('http://uitestingplayground.com/sampleapp');
+    
+// >>>>> дополнить код здесь
+  const login = "log" 
+  const password = "pwd"
+
+// <<<<<
+await page.getByPlaceholder("User Name").fill(login);
+  await page.getByPlaceholder("********").fill(password);
+  await page.locator("#login").click();
+  await expect(page.locator("#loginstatus")).toHaveText(`Welcome, ${login}!`)
+});
